@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VALORANT Masters London 2026</title>
+    <link rel="icon" type="image/png" href="assets/liquipedia_icon_menu.png" />
+    <style>
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial,
+          sans-serif;
+        background-color: #0b0e13;
+        color: #c4c9ce;
+        margin: 0;
+        padding: 20px;
+      }
+      .wiki-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        background-color: #12171d;
+        padding: 25px;
+        border-top: 4px solid #ff4655;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+      }
+
+      .main-title-container {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        border-bottom: 1px solid #2a3546;
+        padding-bottom: 10px;
+        margin-bottom: 25px;
+      }
+      .vct-logo {
+        height: 45px;
+        width: auto;
+      }
+      h1 {
+        color: #ffffff;
+        font-size: 26px;
+        margin: 0;
+      }
+
+      .category-section {
+        margin-bottom: 40px;
+      }
+
+      .category-title {
+        font-size: 20px;
+        color: #ffffff;
+        background-color: #212b36;
+        padding: 8px 15px;
+        border-left: 4px solid #ff4655;
+        margin-bottom: 15px;
+        font-weight: bold;
+        margin-top: 0;
+      }
+
+      .teams-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 20px;
+      }
+
+      .team-card {
+        background-color: #1a212d;
+        border: 1px solid #2a3546;
+        border-radius: 4px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        transition: all 0.3s ease;
+      }
+
+      .team-card.eliminated {
+        opacity: 0.4;
+        filter: grayscale(80%);
+      }
+      .team-card.eliminated:hover {
+        opacity: 0.7;
+      }
+
+      .team-header {
+        background-color: #212b36;
+        padding: 12px;
+        font-weight: bold;
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 16px;
+      }
+
+      .team-logo-img {
+        max-height: 24px;
+        max-width: 40px;
+        object-fit: contain;
+      }
+
+      .header-sub {
+        background-color: #1a212d;
+        padding: 8px 12px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #2a3546;
+      }
+      .region-badge {
+        font-size: 11px;
+        background-color: #2a3546;
+        color: #e2e8f0;
+        padding: 3px 8px;
+        border-radius: 3px;
+        font-weight: bold;
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+
+      .region-logo-img {
+        height: 14px;
+        width: auto;
+      }
+
+      .status-badge {
+        font-size: 11px;
+        padding: 3px 8px;
+        border-radius: 3px;
+        text-transform: uppercase;
+        font-weight: bold;
+      }
+      .status-active {
+        color: #4ade80;
+        border: 1px solid #4ade80;
+        background-color: rgba(74, 222, 128, 0.1);
+      }
+      .status-eliminated {
+        color: #f87171;
+        border: 1px solid #f87171;
+        background-color: rgba(248, 113, 113, 0.1);
+      }
+
+      .card-tabs {
+        display: flex;
+        border-bottom: 2px solid #2a3546;
+        background-color: #12171d;
+      }
+      .card-tab-btn {
+        flex: 1;
+        background: none;
+        border: none;
+        color: #8da4bc;
+        padding: 10px 0;
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 13px;
+      }
+      .card-tab-btn.active {
+        color: #ffffff;
+        border-bottom: 2px solid #ff4655;
+        margin-bottom: -2px;
+      }
+
+      .member-list {
+        display: flex;
+        flex-direction: column;
+      }
+      .member-row {
+        padding: 10px 12px;
+        border-bottom: 1px solid #2a3546;
+        color: #e2e8f0;
+        font-size: 14px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .member-row:last-child {
+        border-bottom: none;
+      }
+      .member-row:nth-child(even) {
+        background-color: #161c25;
+      }
+
+      .role-text {
+        font-size: 10px;
+        color: #a0aec0;
+        text-transform: uppercase;
+        font-weight: bold;
+        background-color: #2a3546;
+        padding: 2px 6px;
+        border-radius: 3px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wiki-container">
+      <div class="main-title-container">
+        <img
+          src="assets/46px-VCT_Masters_icon_allmode.png"
+          alt="VCT Logo"
+          class="vct-logo"
+        />
+        <h1>VALORANT Masters London 2026</h1>
+      </div>
+      <div class="search-container" style="margin-bottom: 25px">
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Search for a team..."
+          onkeyup="filterTeams()"
+          style="
+            width: 100%;
+            padding: 12px;
+            background: #1a212d;
+            border: 1px solid #2a3546;
+            color: #fff;
+            border-radius: 4px;
+            box-sizing: border-box;
+          "
+        />
+      </div>
+      <div id="tournamentContainer"></div>
+    </div>
+
+    <script>
+      const teamLogos = {
+        "Paper Rex": "59px-Paper_Rex_darkmode.png",
+        "G2 Esports": "43px-G2_Esports_2020_lightmode.png",
+        "Team Heretics": "40px-Team_Heretics_2024_allmode.png",
+        "EDward Gaming": "50px-EDward_Gaming_2017_darkmode.png",
+        Leviatán: "50px-Leviatán_allmode.png",
+        NRG: "100px-NRG_2024_allmode.png",
+        "XLG Esports": "69px-XLG_China_2024_allmode.png",
+        "Dragon Ranger Gaming": "44px-Dragon_Ranger_Gaming_allmode.png",
+        "Team Vitality": "41px-Team_Vitality_2023_darkmode.png",
+        "FUT Esports": "26px-Futbolist_2021_darkmode.png",
+        "FULL SENSE": "59px-FULL_SENSE_2025_allmode.png",
+        "Global Esports": "84px-Global_Esports_2020_allmode.png",
+      };
+
+      const regionLogos = {
+        Pacific: "50px-VCT_2023_Pacific_League_allmode.png",
+        Americas: "47px-VCT_2023_Americas_League_allmode.png",
+        EMEA: "50px-VCT_2024_EMEA_League_darkmode.png",
+        China: "44px-VCT_China_allmode.png",
+      };
+
+      fetch("/api/teams")
+        .then((response) => response.json())
+        .then((data) => {
+          const container = document.getElementById("tournamentContainer");
+
+          if (data.length === 0) {
+            container.innerHTML = `<p style="text-align:center; padding: 20px;">Database is Empty.</p>`;
+            return;
+          }
+
+          const groupedTeams = {};
+          data.forEach((team) => {
+            const category = team.category ? team.category : "Uncategorized";
+            if (!groupedTeams[category]) groupedTeams[category] = [];
+            groupedTeams[category].push(team);
+          });
+
+          const sortedCategories = Object.keys(groupedTeams).sort((a, b) => {
+            if (a.toLowerCase() === "playoffs") return -1;
+            if (b.toLowerCase() === "playoffs") return 1;
+            return 0;
+          });
+
+          sortedCategories.forEach((categoryName) => {
+            let sectionHTML = `
+                        <div class="category-section">
+                            <h2 class="category-title">${categoryName} Teams</h2>
+                            <div class="teams-grid">
+                    `;
+
+            groupedTeams[categoryName].forEach((team, index) => {
+              const statusRaw = team.status
+                ? team.status.toLowerCase()
+                : "active";
+              const statusClass =
+                statusRaw === "active" ? "status-active" : "status-eliminated";
+              const dimClass = statusRaw === "eliminated" ? "eliminated" : "";
+              const uniqueId = `team-${team.id || categoryName.replace(/\\s/g, "") + index}`;
+              const regionDisplay = team.region || "Unknown";
+
+              // Di sini gw tambahin folder 'assets/' secara otomatis sebelum manggil gambarnya
+              const teamLogoImg = teamLogos[team.name]
+                ? `<img src="assets/${teamLogos[team.name]}" alt="Logo" class="team-logo-img">`
+                : ``;
+              const regionLogoImg = regionLogos[team.region]
+                ? `<img src="assets/${regionLogos[team.region]}" alt="League" class="region-logo-img">`
+                : ``;
+
+              const players = team.roster
+                ? team.roster.split(",").map((p) => p.trim())
+                : ["TBA"];
+              const staffs = team.staff
+                ? team.staff.split(",").map((s) => s.trim())
+                : ["TBA"];
+
+              const formatMember = (memberString) => {
+                const match = memberString.match(/(.*?)\s*\\[(.*?)\\]/);
+                if (match) {
+                  return `<span>${match[1]}</span> <span class="role-text">${match[2]}</span>`;
+                }
+                return `<span>${memberString}</span>`;
+              };
+
+              const rosterHtml = players
+                .map((p) => `<div class="member-row">${formatMember(p)}</div>`)
+                .join("");
+              const staffHtml = staffs
+                .map((s) => `<div class="member-row">${formatMember(s)}</div>`)
+                .join("");
+
+              sectionHTML += `
+                            <div class="team-card ${dimClass}">
+                                <div class="team-header">
+                                    ${teamLogoImg}
+                                    <span>${team.name}</span>
+                                </div>
+                                <div class="header-sub">
+                                    <span class="region-badge">
+                                        ${regionLogoImg}
+                                        ${regionDisplay}
+                                    </span>
+                                    <span class="status-badge ${statusClass}">${team.status || "Active"}</span>
+                                </div>
+                                
+                                <div class="card-tabs">
+                                    <button class="card-tab-btn active" onclick="switchCardTab(this, 'roster-${uniqueId}', 'staff-${uniqueId}')">Main</button>
+                                    <button class="card-tab-btn" onclick="switchCardTab(this, 'staff-${uniqueId}', 'roster-${uniqueId}')">Staff</button>
+                                </div>
+
+                                <div class="team-body">
+                                    <div id="roster-${uniqueId}" class="member-list">
+                                        ${rosterHtml}
+                                    </div>
+                                    <div id="staff-${uniqueId}" class="member-list" style="display: none;">
+                                        ${staffHtml}
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+            });
+
+            sectionHTML += `</div></div>`;
+            container.innerHTML += sectionHTML;
+          });
+        })
+        .catch((error) => console.error("Error:", error));
+
+      function switchCardTab(btnElement, showId, hideId) {
+        const parent = btnElement.parentElement;
+        parent
+          .querySelectorAll(".card-tab-btn")
+          .forEach((b) => b.classList.remove("active"));
+        btnElement.classList.add("active");
+
+        document.getElementById(showId).style.display = "flex";
+        document.getElementById(hideId).style.display = "none";
+      }
+
+      function filterTeams() {
+        const input = document
+          .getElementById("searchInput")
+          .value.toLowerCase();
+        const cards = document.querySelectorAll(".team-card");
+
+        cards.forEach((card) => {
+          const teamName = card
+            .querySelector(".team-header span")
+            .textContent.toLowerCase();
+          // Menampilkan card jika nama tim cocok dengan input, jika tidak disembunyikan
+          card.style.display = teamName.includes(input) ? "flex" : "none";
+        });
+      }
+    </script>
+  </body>
+</html>
