@@ -1,6 +1,6 @@
 # Mini Liquipedia: VALORANT Masters London 2026 & Stage 2 Regional Tracker
 
-A full-stack tournament database management system heavily inspired by the official Liquipedia wiki layout. This application provides real-time data tracking, visualization, and administration management for the competitive VALORANT Champions Tour (VCT) 2026 ecosystem, seamlessly covering both **VCT Masters London 2026** and the **Stage 2 Regional Tours (Pacific, EMEA, Americas, China)**.
+A full-stack tournament database management system heavily inspired by the official Liquipedia wiki and VLR.gg layout. This application provides real-time data tracking, visualization, and administration management for the competitive VALORANT Champions Tour (VCT) 2026 ecosystem, seamlessly covering both **VCT Masters London 2026** and the **Stage 2 Regional Tours (Pacific, EMEA, Americas, China)**.
 
 ---
 
